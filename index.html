@@ -141,7 +141,7 @@
     line-height: 0.9;
     writing-mode: vertical-rl;
     text-orientation: mixed;
-    transform: rotate(180deg);
+    transform: rotate(0deg);
     padding: 20px 0;
     font-family: 'Playfair Display', serif;
   }
@@ -180,149 +180,140 @@
   }
 
   .date-under-photos {
-    text-align: right;
-    margin-top: 15px;
-    margin-right: 40px;
+    text-align: center;
+    margin-top: 30px;
+    width: 100%;
   }
 
   .wedding-date {
-    font-size: clamp(16px, 2.5vw, 20px);
-    color: #666;
-    letter-spacing: 1px;
-    font-weight: 400;
+    font-size: clamp(18px, 2.5vw, 22px);
+    color: #333;
+    letter-spacing: 2px;
+    font-weight: 600;
+    font-family: 'Playfair Display', serif;
   }
 
-  /* Новый стиль для блока локации */
-  .location {
+  /* Обновленные стили для блока локации */
+  .location-section {
     background: #fff;
-    padding: 80px 20px;
     position: relative;
-    overflow: hidden;
+    max-width: 1000px;
+    margin: 60px auto;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    display: flex;
   }
 
-  .location-container {
-    display: flex;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    gap: 60px;
+  .location-image-container {
+    width: 40%;
+    min-width: 300px;
   }
 
   .location-image {
-    flex: 1;
-    position: relative;
-  }
-
-  .location-image img {
     width: 100%;
-    height: 400px;
+    height: 100%;
     object-fit: cover;
-    border-radius: 10px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
   }
 
   .location-content {
-    flex: 1;
-    text-align: left;
-    position: relative;
+    width: 60%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
   }
 
   .location-title {
-    font-size: clamp(28px, 5vw, 42px);
-    font-weight: 600;
+    font-size: 42px;
+    font-weight: 500;
     color: #333;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     letter-spacing: 2px;
     font-family: 'Playfair Display', serif;
-    position: relative;
-    display: inline-block;
   }
 
-  .location-title::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 0;
-    width: 60px;
-    height: 3px;
-    background: #333;
-  }
-
-  .location-details {
-    margin-bottom: 35px;
+  .location-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
   }
 
   .location-address {
-    font-size: clamp(18px, 3vw, 22px);
+    font-size: 20px;
     color: #555;
     margin-bottom: 15px;
     line-height: 1.5;
-    font-weight: 400;
   }
 
   .location-restaurant {
-    font-size: clamp(20px, 3.5vw, 26px);
+    font-size: 24px;
     color: #333;
     font-weight: 500;
-    font-style: italic;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
   }
 
-  .square-button {
+  .map-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 200px;
-    height: 60px;
+    padding: 12px 30px;
     background: #333;
     color: white;
     text-decoration: none;
-    border-radius: 8px;
-    transition: all 0.3s ease;
     font-size: 14px;
-    font-weight: 500;
     letter-spacing: 1px;
+    transition: all 0.3s ease;
+    text-transform: lowercase;
+    align-self: flex-start;
   }
 
-  .square-button:hover {
-    background: #555;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  .map-button:hover {
+    background: #444;
   }
 
-  .decoration-strip {
-    position: absolute;
-    right: -50px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 100px;
-    height: 100px;
-    border: 2px solid #333;
-    opacity: 0.1;
-  }
-
-  .decoration-strip::before {
-    content: '';
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    right: 10px;
-    bottom: 10px;
-    border: 1px solid #333;
-  }
-
-  .footer {
-    background: #222;
-    color: #fff;
-    padding: 40px 20px;
+  .location-footer {
+    margin: 40px -40px 0;
+    padding: 70px 40px;
     text-align: center;
+    background-color: #333;
+    width: calc(100% + 80px);
   }
 
-  .footer p {
-    font-size: clamp(18px, 4vw, 22px);
+  .location-footer p {
+    font-size: 24px;
     margin: 0;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     font-family: 'Playfair Display', serif;
+    color: #fff;
+    font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    .location-section {
+      flex-direction: column;
+      max-width: 90%;
+    }
+
+    .location-image-container {
+      width: 100%;
+      height: 300px;
+    }
+
+    .location-content {
+      width: 100%;
+      padding: 30px;
+    }
+
+    .location-title {
+      font-size: 32px;
+      margin-bottom: 30px;
+    }
+
+    .location-footer {
+      margin: 40px -30px 0;
+      padding: 25px 30px;
+      width: calc(100% + 60px);
+    }
   }
 
   /* Адаптивность для планшетов */
@@ -349,14 +340,6 @@
     
     .date-under-photos {
       margin-right: 30px;
-    }
-    
-    .location-container {
-      gap: 40px;
-    }
-    
-    .location-image img {
-      height: 350px;
     }
   }
 
@@ -411,22 +394,17 @@
       margin: 15px 0 0 0;
     }
     
-    .location-container {
+    .decor-container {
       flex-direction: column;
-      gap: 40px;
+      gap: 20px;
     }
     
-    .location-content {
-      text-align: center;
+    .decor-image {
+      order: 2;
     }
     
-    .location-title::after {
-      left: 50%;
-      transform: translateX(-50%);
-    }
-    
-    .decoration-strip {
-      display: none;
+    .square-button {
+      order: 1;
     }
   }
 
@@ -456,14 +434,14 @@
       letter-spacing: 1px;
     }
     
-    .location-image img {
-      height: 250px;
+    .square-button {
+      width: 180px;
+      height: 35px;
+      font-size: 12px;
     }
     
-    .square-button {
-      width: 55px;
-      height: 10px;
-      font-size: 13px;
+    .decor-image {
+      width: 120px;
     }
   }
 </style>
@@ -511,34 +489,22 @@
     </div>
   </div>
 
-  <!-- Новый блок локации -->
-  <div class="location">
-    <div class="location-container">
-      <!-- Фото локации -->
-      <div class="location-image">
-        <img src="location-image.jpg" alt="Ресторан Hallen Hall">
+  <!-- Обновленный блок локации -->
+  <div class="location-section">
+    <div class="location-image-container">
+      <img class="location-image" src="location-image.jpg" alt="Hallen Hall" />
+    </div>
+    <div class="location-content">
+      <h2 class="location-title">ЛОКАЦИЯ</h2>
+      <div class="location-info">
+        <p class="location-address">г. Тюмень, ул. Республики 246а</p>
+        <p class="location-restaurant">РЕСТОРАН "Hallen hall"</p>
+        <a href="#" class="map-button">посмотреть на карте</a>
       </div>
-      
-      <!-- Контент локации -->
-      <div class="location-content">
-        <h2 class="location-title">ЛОКАЦИЯ</h2>
-        <div class="location-details">
-          <p class="location-address">ул. Республики 246а</p>
-          <p class="location-restaurant">Ресторан "Hallen Hall"</p>
-        </div>
-        <a href="https://maps.google.com" class="square-button" target="_blank">
-          ПОСМОТРЕТЬ НА КАРТЕ
-        </a>
-        
-        <!-- Декоративный квадрат -->
-        <div class="decoration-strip"></div>
+      <div class="location-footer">
+        <p>СБОР ГОСТЕЙ 16:00</p>
       </div>
     </div>
-  </div>
-
-  <!-- Нижний блок -->
-  <div class="footer">
-    <p>Сбор гостей: 16:00</p>
   </div>
 
 </div>
