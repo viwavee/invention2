@@ -134,17 +134,16 @@
   }
 
   .initials {
-    font-size: clamp(42px, 6vw, 65px);
-    font-weight: 600;
-    color: #333;
-    letter-spacing: 3px;
-    line-height: 0.9;
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    transform: rotate(0deg);
-    padding: 20px 0;
-    font-family: 'Playfair Display', serif;
-  }
+  font-size: clamp(42px, 6vw, 65px);
+  font-weight: 600;
+  color: #333;
+  letter-spacing: 3px;
+  line-height: 1.2;
+  font-family: 'Playfair Display', serif;
+  writing-mode: horizontal-tb; /* можно удалить */
+  text-orientation: mixed;     /* можно удалить */
+  transform: none;             /* убираем поворот */
+}
 
   .photos-side {
     display: flex;
@@ -465,7 +464,9 @@
     <div class="initials-photos-container">
       <!-- Вертикальные инициалы слева -->
       <div class="initials-content">
-        <div class="initials">С & У</div>
+        <div class="initials">
+  С<br>&<br>У
+</div>
       </div>
       
       <!-- Фото справа -->
