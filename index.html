@@ -6,500 +6,440 @@
 <title>Свадебное приглашение</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  /* Reset */
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{font-family:"Cormorant Garamond",serif;background:#f8f8f8;color:#222;line-height:1.6;-webkit-font-smoothing:antialiased}
 
-  body {
-    font-family: 'Cormorant Garamond', serif;
-    background-color: #f8f8f8;
-    color: #222;
-    line-height: 1.6;
-  }
+  /* Container */
+  .invite{max-width:1000px;margin:20px auto;background:#fff;box-shadow:0 10px 30px rgba(0,0,0,0.08);border-radius:10px;overflow:hidden}
 
-  .invite {
-    width: 100%;
-    margin: 0 auto;
-    background: #fff;
-    box-shadow: 0 0 30px rgba(0,0,0,0.1);
-  }
+  .section{text-align:center;padding:36px 20px}
 
-  .section {
-    text-align: center;
-    padding: 40px 20px;
-  }
+  /* Hero */
+  .hero{position:relative;width:100%;height:60vh;min-height:320px;overflow:hidden}
+  .hero img{width:100%;height:100%;object-fit:cover;display:block}
+  .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.08) 0%,rgba(0,0,0,0.5)60%)}
+  .hero-text{position:absolute;left:50%;top:60%;transform:translate(-50%,-60%);color:#fff;text-align:center;width:88%;max-width:900px;text-shadow:0 2px 10px rgba(0,0,0,0.45)}
 
-  .hero {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    min-height: 600px;
-    overflow: hidden;
-  }
-
-  .hero img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  .hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      to bottom,
-      rgba(0,0,0,0.2) 0%,
-      rgba(0,0,0,0.4) 100%
-    );
-  }
-
-  .hero-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #fff;
-    text-align: center;
-    width: 90%;
-    max-width: 800px;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-  }
-
-  .hero-text .date {
-    font-size: clamp(20px, 4vw, 30px);
-    margin-bottom: 20px;
-    letter-spacing: 3px;
-    font-weight: 300;
-    font-family: 'Playfair Display', serif;
-  }
-
-  .hero-text .names {
-    font-size: clamp(36px, 8vw, 70px);
-    margin: 0;
-    letter-spacing: 2px;
-    font-weight: 500;
-    line-height: 1.1;
-    font-family: 'Playfair Display', serif;
-  }
-
-  .greeting {
-    background: #fff;
-    padding: 60px 20px;
-  }
-
-  .greeting h3 {
-    font-size: clamp(24px, 5vw, 32px);
-    margin-bottom: 25px;
-    color: #333;
-    font-weight: 500;
-    font-family: 'Playfair Display', serif;
-  }
-
-  .greeting p {
-    font-size: clamp(16px, 3vw, 18px);
-    max-width: 600px;
-    margin: 0 auto;
-    color: #555;
-  }
-
-  .initials-photos-section {
-    width: 100%;
-    padding: 80px 20px;
-    background: #f8f8f8;
-  }
-
-  .initials-photos-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    gap: 40px;
-    position: relative;
-  }
-
-  .initials-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-right: -20px;
-    z-index: 2;
-  }
-
-  .initials {
-  font-size: clamp(42px, 6vw, 65px);
-  font-weight: 600;
-  color: #333;
-  letter-spacing: 3px;
-  line-height: 1.2;
-  font-family: 'Playfair Display', serif;
-  writing-mode: horizontal-tb; /* можно удалить */
-  text-orientation: mixed;     /* можно удалить */
-  transform: none;             /* убираем поворот */
-}
-
-  .photos-side {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-    align-items: flex-start;
-    position: relative;
-  }
-
-  .photo-top, .photo-bottom {
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    transition: transform 0.3s ease;
-  }
-
-  .photo-top {
-    transform: rotate(3deg);
-    width: 380px;
-    height: 280px;
-    object-fit: cover;
-  }
-
-  .photo-bottom {
-    transform: rotate(-2deg);
-    width: 340px;
-    height: 220px;
-    object-fit: cover;
-    margin-left: 40px;
-  }
-
-  .photo-top:hover, .photo-bottom:hover {
-    transform: rotate(0deg) scale(1.02);
-  }
-
-  .date-under-photos {
-    text-align: center;
-    margin-top: 30px;
-    width: 100%;
-  }
-
-  .wedding-date {
-    font-size: clamp(18px, 2.5vw, 22px);
-    color: #333;
-    letter-spacing: 2px;
-    font-weight: 600;
-    font-family: 'Playfair Display', serif;
-  }
-
-  /* Обновленные стили для блока локации */
-  .location-section {
-    background: #fff;
-    position: relative;
-    max-width: 1000px;
-    min-width: 800px;
-    margin: 60px auto;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    display: flex;
-  }
-
-  .location-image-container {
-    width: 40%;
-    min-width: 300px;
-  }
-
-  .location-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .location-content {
-    width: 60%;
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .location-title {
-    font-size: 42px;
-    font-weight: 500;
-    color: #333;
-    margin-bottom: 40px;
-    letter-spacing: 2px;
-    font-family: 'Playfair Display', serif;
-  }
-
-  .location-info {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: left;
-  }
-
-  .location-address {
-    font-size: 20px;
-    color: #555;
-    margin-bottom: 15px;
-    line-height: 1.5;
-  }
-
-  .location-restaurant {
-    font-size: 24px;
-    color: #333;
-    font-weight: 500;
-    margin-bottom: 30px;
-  }
-
-  .map-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 12px 30px;
-    background: #333;
-    color: white;
-    text-decoration: none;
-    font-size: 14px;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-    text-transform: lowercase;
-    align-self: flex-start;
-  }
-
-  .map-button:hover {
-    background: #444;
-  }
-
-  .location-footer {
-    margin: 40px -40px 0;
-    padding: 70px 40px;
-    text-align: center;
-    background-color: #333;
-    width: calc(100% + 80px);
-  }
-
-  .location-footer p {
-    font-size: 24px;
-    margin: 0;
-    letter-spacing: 2px;
-    font-family: 'Playfair Display', serif;
-    color: #fff;
-    font-weight: 500;
-  }
-
-  @media (max-width: 768px) {
-    .location-section {
-      max-width: 95%;
-    }
-
-    .location-title {
-      font-size: 32px;
-    }
-
-    .location-address {
-      font-size: 18px;
-    }
-
-    .location-restaurant {
-      font-size: 22px;
-    }
-  }
-
-  /* Адаптивность для планшетов */
-  @media (max-width: 1024px) {
-    .hero {
-      height: 80vh;
-      min-height: 500px;
-    }
     
-    .initials-photos-container {
-      gap: 30px;
-    }
-    
-    .photo-top {
-      width: 340px;
-      height: 250px;
-    }
-    
-    .photo-bottom {
-      width: 300px;
-      height: 200px;
-      margin-left: 30px;
-    }
-    
-    .date-under-photos {
-      margin-right: 30px;
-    }
+  .hero-text .date{font-size:clamp(14px,3.5vw,20px);margin-bottom:6px;letter-spacing:2px;font-family:'Playfair Display',serif}
+  .hero-text .names{font-size:clamp(28px,8vw,56px);line-height:1;font-family:'Playfair Display',serif}
+
+  .greeting{background:#fff;padding:34px 20px}
+  .greeting h3{font-size:clamp(20px,5vw,28px);margin-bottom:12px;color:#333;font-family:'Playfair Display',serif}
+  .greeting p{font-size:clamp(14px,3.2vw,16px);max-width:700px;margin:0 auto;color:#555}
+
+  /* Initials + photos */
+  .initials-photos-section{width:100%;padding:36px 20px;background:#f8f8f8}
+  .initials-photos-container{display:flex;align-items:center;justify-content:flex-start;max-width:1200px;margin:0 auto;gap:20px;flex-wrap:nowrap;overflow-x:auto;padding-bottom:8px}
+  .initials-content{flex:0 0 84px;display:flex;align-items:center;justify-content:center}
+  .initials{font-size:clamp(28px,7vw,48px);font-weight:600;color:#333;letter-spacing:2px;line-height:1;font-family:'Playfair Display',serif;text-align:center}
+  .photos-side{flex:1 1 auto;display:flex;flex-direction:column;gap:12px;align-items:flex-start;min-width:180px}
+  .photos-side img{width:180px;height:180px;border-radius:6px;box-shadow:0 8px 20px rgba(0,0,0,0.15);object-fit:cover;display:block}
+  .photo-top{height:180px}
+  .photo-bottom{height:140px}
+  .date-under-photos{width:100%;text-align:center;margin-top:10px}
+  .wedding-date{font-size:clamp(14px,3vw,18px);color:#333;letter-spacing:1px;font-weight:600;font-family:'Playfair Display',serif}
+  .wedding-date{font-size:clamp(14px,3vw,18px);color:#333;letter-spacing:1px;font-weight:600;font-family:'Playfair Display',serif}
+
+  /* Schedule / Программа дня */
+  .schedule-section{background:transparent;padding:28px 20px}
+  .schedule-title{font-family:'Playfair Display',serif;font-size:28px;color:#2b2b2b;margin-bottom:18px;font-weight:500}
+  .schedule-container{max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:18px;position:relative}
+  .schedule-item{display:flex;gap:18px;align-items:flex-start;position:relative}
+  .schedule-item .time{flex:0 0 84px;font-family:'Playfair Display',serif;font-size:20px;color:#333;font-weight:600}
+  .schedule-item .marker{flex:0 0 40px;display:flex;align-items:center;justify-content:center}
+  .schedule-item .marker .dot{width:8px;height:8px;border-radius:50%;background:#222;display:inline-block;box-shadow:0 0 0 3px rgba(0,0,0,0.04)}
+  .schedule-item .desc{flex:1;color:#555;line-height:1.45}
+  .schedule-item .desc strong{display:block;color:#333;margin-bottom:6px;font-family:'Playfair Display',serif}
+
+  /* vertical line through markers */
+  .schedule-container::before{content:'';position:absolute;left:122px;top:6px;bottom:6px;width:2px;background:#e6e6e6;border-radius:2px}
+
+  @media(min-width:900px){
+    .schedule-container{gap:22px}
+    .schedule-item .time{font-size:22px;flex:0 0 100px}
+    .schedule-container::before{left:138px}
   }
 
-  /* Адаптивность для мобильных устройств */
-  @media (max-width: 768px) {
-    .hero {
-      height: 70vh;
-      min-height: 400px;
-    }
-    
-    .initials-photos-container {
-      flex-direction: column;
-      gap: 30px;
-    }
-    
-    .initials-content {
-      margin-right: 0;
-      order: 1;
-    }
-    
-    .initials {
-      writing-mode: horizontal-tb;
-      transform: rotate(0deg);
-      padding: 10px 0;
-    }
-    
-    .photos-side {
-      order: 2;
-      align-items: center;
-      gap: 20px;
-    }
-    
-    .photo-top, .photo-bottom {
-      width: 100%;
-      max-width: 400px;
-      margin-left: 0;
-    }
-    
-    .photo-top {
-      height: 280px;
-      transform: rotate(2deg);
-    }
-    
-    .photo-bottom {
-      height: 220px;
-      transform: rotate(-1deg);
-    }
-    
-    .date-under-photos {
-      order: 3;
-      text-align: center;
-      margin: 15px 0 0 0;
-    }
-    
-    .decor-container {
-      flex-direction: column;
-      gap: 20px;
-    }
-    
-    .decor-image {
-      order: 2;
-    }
-    
-    .square-button {
-      order: 1;
-    }
+  /* Wishes / Dress code / Guest form */
+  .wishes-section{padding:26px 20px;background:transparent}
+  .wishes-list{max-width:820px;margin:0 auto;padding-left:18px;color:#555;line-height:1.5}
+  .wishes-list li{margin-bottom:10px}
+
+  .dresscode-section{padding:22px 20px;text-align:center}
+  .dresscode-text{max-width:720px;margin:0 auto 14px;color:#555}
+  .color-palette{display:flex;gap:12px;justify-content:center;align-items:center;margin-top:12px}
+  .color-palette .color{width:34px;height:34px;border-radius:50%;display:inline-block;box-shadow:0 4px 12px rgba(0,0,0,0.08);border:2px solid rgba(255,255,255,0.6)}
+
+  .guest-section{padding:28px 20px;text-align:center}
+  .guest-section p{color:#555;margin-bottom:14px}
+  .form-button{display:inline-block;padding:10px 20px;border-radius:28px;border:1px solid #333;color:#333;text-decoration:none;font-weight:600}
+
+  @media(max-width:420px){
+    .color-palette .color{width:28px;height:28px}
   }
 
-  @media (max-width: 480px) {
-    .hero {
-      height: 65vh;
-      min-height: 350px;
-    }
-    
-    .photo-top {
-      height: 240px;
-    }
-    
-    .photo-bottom {
-      height: 190px;
-    }
-    
-    .initials {
-      font-size: 36px;
-    }
-    
-    .hero-text .date {
-      letter-spacing: 2px;
-    }
-    
-    .hero-text .names {
-      letter-spacing: 1px;
-    }
-    
-    .square-button {
-      width: 180px;
-      height: 35px;
-      font-size: 12px;
-    }
-    
-    .decor-image {
-      width: 120px;
-    }
+  /* Ending photo section */
+  .ending-section{padding:0;margin:28px auto 40px;background:transparent;text-align:center}
+  .ending-photo{width:100%;max-height:560px;object-fit:cover;display:block;border-radius:8px;box-shadow:0 12px 30px rgba(0,0,0,0.08)}
+  .ending-text{padding:18px 14px 34px}
+  .waiting{font-family:'Playfair Display',serif;font-size:40px;color:#222;margin:8px 0;font-weight:600}
+  .couple-names{font-size:18px;color:#555;letter-spacing:1px;margin-top:6px}
+
+  /* Card wrapper for separate blocks */
+  .section-card{background:#fff;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.06);padding:22px;margin:20px auto;max-width:980px}
+
+      /* Cards row: grid of three cards on desktop (duplicate block) */
+      .cards-row{max-width:980px;margin:20px auto;display:grid;grid-template-columns:1fr;gap:18px;padding:0 14px}
+      .cards-row .section-card{margin:0;padding:18px;position:relative}
+      .section-card .section-title{margin:0 0 12px 0;padding-left:8px}
+
+      /* Variants */
+      .wishes-card{background:linear-gradient(180deg,#1c1c1b,#ffffff)}
+      .wishes-card .section-title{color:rgba(11, 10, 10, 0)}
+
+      .dresscode-card{background:linear-gradient(180deg,#171617,#ffffff)}
+      .dresscode-card .section-title{color:rgba(11, 10, 10, 0)}
+
+      .guest-card{background:linear-gradient(180deg,#191a1a,#ffffff)}
+      .guest-card .section-title{color:rgba(11, 10, 10, 0)}
+
+      /* Accent stripe on the left */
+      .cards-row .section-card::before{content:'';position:absolute;left:14px;top:14px;bottom:14px;width:6px;border-radius:6px;background:#ddd}
+      .cards-row .wishes-card::before{background:#f2d8b0}
+      .cards-row .dresscode-card::before{background:#f6c6cc}
+      .cards-row .guest-card::before{background:#bfe9d6}
+
+      @media(min-width:900px){
+        .cards-row{grid-template-columns:repeat(3,1fr);gap:20px}
+      }
+
+  /* Cards row: grid of three cards on desktop */
+  .cards-row{max-width:980px;margin:20px auto;display:grid;grid-template-columns:1fr;gap:18px;padding:0 14px}
+  .cards-row .section-card{margin:0;padding:18px;position:relative}
+  .section-card .section-title{margin:0 0 12px 0;padding-left:8px}
+
+  /* Variants */
+  .wishes-card{background:linear-gradient(180deg,#21211f,#ffffff)}
+  .wishes-card .section-title{color:rgba(11, 10, 10, 0)}
+
+  .dresscode-card{background:linear-gradient(180deg,#fff6f8,#ffffff)}
+  .dresscode-card .section-title{color:rgba(11, 10, 10, 0)}
+
+  .guest-card{background:linear-gradient(180deg,#f6fff9,#ffffff)}
+  .guest-card .section-title{color:rgba(11, 10, 10, 0)}
+
+  /* Accent stripe on the left */
+  .cards-row .section-card::before{content:'';position:absolute;left:14px;top:14px;bottom:14px;width:6px;border-radius:6px;background:#ddd}
+  .cards-row .wishes-card::before{background:#131312}
+  .cards-row .dresscode-card::before{background:#181717}
+  .cards-row .guest-card::before{background:#141515}
+
+  @media(min-width:900px){
+    .cards-row{grid-template-columns:repeat(3,1fr);gap:20px}
   }
+
+  /* Schedule / Программа дня */
+  .schedule-section{background:transparent;padding:28px 20px}
+  .schedule-title{font-family:'Playfair Display',serif;font-size:28px;color:#2b2b2b;margin-bottom:18px;font-weight:500}
+  .schedule-container{max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+  .schedule-item{display:flex;gap:18px;align-items:flex-start}
+  .schedule-item .time{flex:0 0 84px;font-family:'Playfair Display',serif;font-size:20px;color:#333;font-weight:600}
+  .schedule-item .desc{flex:1;color:#555;line-height:1.45}
+  .schedule-item .desc strong{display:block;color:#333;margin-bottom:6px;font-family:'Playfair Display',serif}
+
+  @media(min-width:900px){
+    .schedule-container{gap:22px}
+    .schedule-item .time{font-size:22px;flex:0 0 100px}
+  }
+
+
+  /* Location: desktop-friendly layout with framed content and full-width dark footer */
+  .location-section{
+    background:#fff;
+    position:relative;
+    max-width:1000px;
+    margin:40px auto;
+    box-shadow:0 6px 24px rgba(0,0,0,0.06);
+    display:flex;
+    align-items:stretch;
+    overflow:visible;
+  }
+
+  .location-image-container{flex:0 0 30%;min-width:200px;overflow:hidden;max-height:320px}
+  .location-image{width:100%;height:70%;object-fit:cover;display:block}
+
+  .location-content{flex:1;padding:40px;display:flex;flex-direction:column;justify-content:center}
+  .location-title{font-size:42px;font-weight:500;color:#333;margin-bottom:40px;letter-spacing:2px;font-family:'Playfair Display',serif}
+  .location-info{flex-grow:1;display:flex;flex-direction:column;justify-content:center;text-align:left}
+  .location-address{font-size:20px;color:#555;margin-bottom:15px;line-height:1.5}
+  .location-restaurant{font-size:24px;color:#333;font-weight:500;margin-bottom:30px}
+  .map-button{display:inline-flex;align-items:center;justify-content:center;padding:12px 30px;background:#333;color:#fff;text-decoration:none;font-size:14px;letter-spacing:1px;transition:all .3s;text-transform:none;align-self:flex-start;border-radius:4px}
+  .map-button:hover{background:#444}
+
+  .location-footer{margin:40px -40px 0;padding:70px 40px;text-align:center;background-color:#333;width:calc(100% + 80px)}
+  .location-footer p{font-size:24px;margin:0;letter-spacing:2px;font-family:'Playfair Display',serif;color:#fff;font-weight:500}
+
+  /* Desktop tweaks */
+  @media(min-width:1000px){
+    .invite{max-width:980px}
+    .hero{height:70vh;min-height:520px}
+    .initials-content{flex:0 0 110px}
+    .photo-top{height:320px}
+    .photo-bottom{height:260px}
+    .initials-photos-container{justify-content:center}
+    .photos-side{margin-left:40px}
+  }
+  @media(max-width:768px){
+    .location-image-container{max-height:220px}
+  }
+  /* Tablet */
+  @media(max-width:900px){
+    .initials-photos-container{gap:20px}
+    .photos-side img{max-width:640px}
+  }
+
+
 </style>
 </head>
-<body>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+      /* Reset */
+      *{box-sizing:border-box;margin:0;padding:0}
+      html,body{height:100%}
+      body{font-family:"Cormorant Garamond",serif;background:#f8f8f8;color:#222;line-height:1.6;-webkit-font-smoothing:antialiased}
+      @media(min-width:768px){
+        .cards-row{grid-template-columns:repeat(3,1fr);gap:20px}
+      }
 
-<div class="invite">
+      /* Container */
+      .invite{max-width:1000px;margin:20px auto;background:#fff;box-shadow:0 10px 30px rgba(0,0,0,0.08);border-radius:10px;overflow:hidden}
 
-  <!-- Верхний блок с фото -->
-  <div class="hero">
-    <img src="image.png" alt="Сергей и Ульяна">
-    <div class="hero-overlay"></div>
-    <div class="hero-text">
-      <p class="date">28 СЕНТЯБРЯ 2024</p>
-      <h1 class="names">Сергей & Ульяна</h1>
-    </div>
-  </div>
+      .section{text-align:center;padding:36px 20px}
 
-  <!-- Приветствие -->
-  <div class="section greeting">
-    <h3>Дорогие гости!</h3>
-    <p>
-      Совсем скоро состоится самое главное торжество в нашей жизни — наша свадьба!
-      Приглашаем вас разделить радость этого прекрасного дня с нами!
-    </p>
-  </div>
+      /* Hero */
+      .hero{position:relative;width:100%;height:60vh;min-height:320px;overflow:hidden}
+      .hero img{width:100%;height:100%;object-fit:cover;display:block}
+      .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.08) 0%,rgba(0,0,0,0.5)60%)}
+      .hero-text{position:absolute;left:50%;top:60%;transform:translate(-50%,-60%);color:#fff;text-align:center;width:88%;max-width:900px;text-shadow:0 2px 10px rgba(0,0,0,0.45)}
+      .hero-text .date{font-size:clamp(14px,3.5vw,20px);margin-bottom:6px;letter-spacing:2px;font-family:'Playfair Display',serif}
+      .hero-text .names{font-size:clamp(28px,8vw,56px);line-height:1;font-family:'Playfair Display',serif}
 
-  <!-- Блок с инициалами слева и фото справа -->
-  <div class="initials-photos-section">
-    <div class="initials-photos-container">
-      <!-- Вертикальные инициалы слева -->
-      <div class="initials-content">
-        <div class="initials">
-  С<br>&<br>У
-</div>
-      </div>
+      .greeting{background:#fff;padding:34px 20px}
+      .greeting h3{font-size:clamp(20px,5vw,28px);margin-bottom:12px;color:#333;font-family:'Playfair Display',serif}
+      .greeting p{font-size:clamp(14px,3.2vw,16px);max-width:700px;margin:0 auto;color:#555}
+
+      /* Initials + photos */
+      .initials-photos-section{width:100%;padding:36px 20px;background:#f8f8f8}
+      .initials-photos-container{display:flex;align-items:center;justify-content:flex-start;max-width:1200px;margin:0 auto;gap:20px;flex-wrap:nowrap;overflow-x:auto;padding-bottom:8px}
+      .initials-content{flex:0 0 84px;display:flex;align-items:center;justify-content:center}
+      .initials{font-size:clamp(28px,7vw,48px);font-weight:600;color:#333;letter-spacing:2px;line-height:1;font-family:'Playfair Display',serif;text-align:center}
+      .photos-side{flex:1 1 auto;display:flex;flex-direction:column;gap:12px;align-items:flex-start;min-width:180px}
+      .photos-side img{width:180px;height:180px;border-radius:6px;box-shadow:0 8px 20px rgba(0,0,0,0.15);object-fit:cover;display:block}
+      .photo-top{height:180px}
+      .photo-bottom{height:140px}
+      .date-under-photos{width:100%;text-align:center;margin-top:10px}
+      .wedding-date{font-size:clamp(14px,3vw,18px);color:#333;letter-spacing:1px;font-weight:600;font-family:'Playfair Display',serif}
+
+      /* Schedule / Программа дня */
+      .schedule-section{background:transparent;padding:28px 20px}
+      .schedule-title{font-family:'Playfair Display',serif;font-size:28px;color:#2b2b2b;margin-bottom:18px;font-weight:500}
+      .schedule-container{max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:18px;position:relative}
+      .schedule-item{display:flex;gap:18px;align-items:flex-start;position:relative}
+      .schedule-item .time{flex:0 0 84px;font-family:'Playfair Display',serif;font-size:20px;color:#333;font-weight:600}
+      .schedule-item .marker{flex:0 0 40px;display:flex;align-items:center;justify-content:center}
+      .schedule-item .marker .dot{width:8px;height:8px;border-radius:50%;background:#222;display:inline-block;box-shadow:0 0 0 3px rgba(0,0,0,0.04)}
+      .schedule-item .desc{flex:1;color:#555;line-height:1.45}
+      .schedule-item .desc strong{display:block;color:#333;margin-bottom:6px;font-family:'Playfair Display',serif}
+
+      /* vertical line through markers */
+      .schedule-container::before{content:'';position:absolute;left:122px;top:6px;bottom:6px;width:2px;background:#e6e6e6;border-radius:2px}
+
+      @media(min-width:900px){
+        .schedule-container{gap:22px}
+        .schedule-item .time{font-size:22px;flex:0 0 100px}
+        .schedule-container::before{left:138px}
+      }
+
+      /* Wishes / Dress code / Guest form */
+      .wishes-section{padding:26px 20px;background:transparent}
+      .wishes-list{max-width:820px;margin:0 auto;padding-left:18px;color:#555;line-height:1.5}
+      .wishes-list li{margin-bottom:10px}
+
+      .dresscode-section{padding:22px 20px;text-align:center}
+      .dresscode-text{max-width:720px;margin:0 auto 14px;color:#555}
+      .color-palette{display:flex;gap:12px;justify-content:center;align-items:center;margin-top:12px}
+      .color-palette .color{width:34px;height:34px;border-radius:50%;display:inline-block;box-shadow:0 4px 12px rgba(0,0,0,0.08);border:2px solid rgba(255,255,255,0.6)}
+
+      .guest-section{padding:28px 20px;text-align:center}
+      .guest-section p{color:#555;margin-bottom:14px}
+      .form-button{display:inline-block;padding:10px 20px;border-radius:28px;border:1px solid #333;color:#333;text-decoration:none;font-weight:600}
+
+      @media(max-width:420px){
+        .color-palette .color{width:28px;height:28px}
+      }
+
+      /* Card wrapper for separate blocks */
+      .section-card{background:#fff;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.06);padding:22px;margin:20px auto;max-width:980px}
+
+      /* Location */
+      .location-section{background:#fff;position:relative;max-width:1000px;margin:40px auto;box-shadow:0 6px 24px rgba(0,0,0,0.06);display:flex;align-items:stretch}
+      .location-image-container{flex:0 0 30%;min-width:200px;overflow:hidden;max-height:320px}
+      .location-image{width:100%;height:100%;object-fit:cover;display:block}
+      .location-content{flex:1;padding:40px;display:flex;flex-direction:column;justify-content:center}
+      .location-title{font-size:42px;font-weight:500;color:#333;margin-bottom:40px;letter-spacing:2px;font-family:'Playfair Display',serif}
+      .location-info{flex-grow:1;display:flex;flex-direction:column;justify-content:center;text-align:left}
+      .location-address{font-size:20px;color:#555;margin-bottom:15px;line-height:1.5}
+      .location-restaurant{font-size:24px;color:#333;font-weight:500;margin-bottom:30px}
+      .map-button{display:inline-flex;align-items:center;justify-content:center;padding:12px 30px;background:#333;color:#fff;text-decoration:none;font-size:14px;letter-spacing:1px;transition:all .3s;text-transform:none;align-self:flex-start;border-radius:4px}
+      .map-button:hover{background:#444}
+      .location-footer{margin:40px -40px 0;padding:70px 40px;text-align:center;background-color:#333;width:calc(100% + 80px)}
+      .location-footer p{font-size:24px;margin:0;letter-spacing:2px;font-family:'Playfair Display',serif;color:#fff;font-weight:500}
+
+      /* Responsive tweaks */
+      @media(min-width:1000px){.invite{max-width:980px}.hero{height:70vh;min-height:520px}.initials-content{flex:0 0 110px}.photo-top{height:320px}.photo-bottom{height:260px}}
+      @media(max-width:900px){.initials-photos-container{gap:20px}.photos-side img{max-width:640px}}
+      @media(max-width:768px){.invite{margin:12px}.hero{height:50vh;min-height:280px}.hero-text{top:65%}.initials-photos-container{flex-direction:column;align-items:center;padding:18px 6px}.initials-content{order:2;flex:0 0 auto}.initials{font-size:40px}.photos-side{order:1;width:100%}.photo-top{height:220px}.photo-bottom{height:160px}.location-section{flex-direction:column}.location-image-container{width:100%;min-width:0;height:220px;max-height:420px}.location-image{height:100%}.location-content{padding:18px}.location-footer{margin-top:12px}}
+      @media(max-width:420px){.hero-text .names{font-size:28px}.initials{font-size:34px}.photo-top{height:200px}.photo-bottom{height:140px}}
+
+    </style>
+    </head>
+    <style>
+      /* Ending photo styles (duplicate block) */
+      .ending-section{padding:0;margin:28px auto 40px;background:transparent;text-align:center}
+      .ending-photo{width:100%;max-height:560px;object-fit:cover;display:block;border-radius:8px;box-shadow:0 12px 30px rgba(0,0,0,0.08)}
+      .ending-text{padding:18px 14px 34px}
+      .waiting{font-family:'Playfair Display',serif;font-size:40px;color:#222;margin:8px 0;font-weight:600}
+      .couple-names{font-size:18px;color:#555;letter-spacing:1px;margin-top:6px}
+    </style>
+    <style>
+      /* Overrides: сделать заголовки карточек чёрными и выделить пожелания */
+      .cards-row .section-card .section-title{color:#111 !important}
       
-      <!-- Фото справа -->
-      <div class="photos-side">
-        <img class="photo-top" src="image2.jpg" alt="Молодожены">
-        <img class="photo-bottom" src="imаge3.jpg" alt="Молодожены">
-        <!-- Дата прямо под фото -->
-        <div class="date-under-photos">
-          <div class="wedding-date">28.09.2024</div>
+    </style>
+  <body>
+
+  <div class="invite">
+
+    <!-- Верхний блок с фото -->
+    <div class="hero">
+      <img src="image.png" alt="Сергей и Ульяна">
+      <div class="hero-overlay"></div>
+      <div class="hero-text">
+        <p class="date">28 СЕНТЯБРЯ 2024</p>
+        <h1 class="names">Сергей &amp; Ульяна</h1>
+      </div>
+      </div>
+
+      
+
+    <!-- Приветствие -->
+    <div class="section greeting">
+      <h3>Дорогие гости!</h3>
+      <p>
+        Совсем скоро состоится самое главное торжество в нашей жизни — наша свадьба!
+        Приглашаем вас разделить радость этого прекрасного дня с нами!
+
+            
+        
+                
+      </p>
+    </div>
+
+
+        <!-- Обновленный блок локации -->
+    <div class="location-section">
+      <div class="location-image-container">
+        <img class="location-image" src="location-image.jpg" alt="Hallen Hall" />
+      </div>
+      <div class="location-content">
+        <h2 class="location-title">ЛОКАЦИЯ</h2>
+        <div class="location-info">
+          <p class="location-address">Ресторан «Мансарда», г. Санкт-Петербург, Английская наб., 60</p>
+          <p class="location-restaurant">РЕСТОРАН "Hallen hall"</p>
+          <a href="#" class="map-button">посмотреть на карте</a>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Обновленный блок локации -->
-  <div class="location-section">
-    <div class="location-image-container">
-      <img class="location-image" src="location-image.jpg" alt="Hallen Hall" />
-    </div>
-    <div class="location-content">
-      <h2 class="location-title">ЛОКАЦИЯ</h2>
-      <div class="location-info">
-        <p class="location-address">г. Тюмень, ул. Республики 246а</p>
-        <p class="location-restaurant">РЕСТОРАН "Hallen hall"</p>
-        <a href="#" class="map-button">посмотреть на карте</a>
+    <!-- Секция: Программа дня (после ресторана) -->
+    <div class="schedule-section section">
+      <h2 class="schedule-title">Программа дня</h2>
+      <div class="schedule-container">
+        <div class="schedule-item">
+          <div class="time">12:00</div>
+          <div class="marker"><span class="dot"></span></div>
+          <div class="desc"><strong>Торжественная церемония</strong>Дворец бракосочетания №1 г. Санкт-Петербург, Английская наб., 28</div>
+        </div>
+        <div class="schedule-item">
+          <div class="time">13:00</div>
+          <div class="marker"><span class="dot"></span></div>
+          <div class="desc"><strong>Прогулка и фотосессия</strong>Для всех гостей будет организован трансфер до ресторана.</div>
+        </div>
+        <div class="schedule-item">
+          <div class="time">16:30</div>
+          <div class="marker"><span class="dot"></span></div>
+          <div class="desc"><strong>Сбор гостей</strong>Ресторан «Мансарда», г. Санкт-Петербург, Английская наб., 60</div>
+        </div>
+        <div class="schedule-item">
+          <div class="time">17:00</div>
+          <div class="marker"><span class="dot"></span></div>
+          <div class="desc"><strong>Банкет</strong>Начало праздничного вечера. Встреча жениха и невесты.</div>
+        </div>
+        <div class="schedule-item">
+          <div class="time">22:00</div>
+          <div class="marker"><span class="dot"></span></div>
+          <div class="desc"><strong>Завершение вечера</strong>Для всех желающих будет организован трансфер до дома.</div>
+        </div>
       </div>
-      <div class="location-footer">
-        <p>СБОР ГОСТЕЙ 16:00</p>
-      </div>
     </div>
-  </div>
 
-</div>
+      <!-- Карточки: Пожелания / Дресс код / Анкета гостя (после Программы дня) -->
+      <div class="cards-row">
+        <div class="section-card wishes-card">
+          <div class="wishes-section">
+            <h3 class="section-title">Пожелания</h3>
+            <ul class="wishes-list">
+              <li>Будем очень благодарны за денежные подарки, которые помогут нам в осуществлении наших мечт.</li>
+              <li>Давайте оставим традицию криков «Горько» и просто будем наслаждаться моментом.</li>
+            </ul>
+          </div>
+        </div>
 
-</body>
+        <div class="section-card dresscode-card">
+          <div class="dresscode-section">
+            <h3 class="section-title">Дресс код</h3>
+            <p class="dresscode-text">Мы будем признательны, если вы поддержите общую цветовую гамму на нашей свадьбе.</p>
+            <div class="color-palette">
+              <span class="color" style="background:#2b0b0b"></span>
+              <span class="color" style="background:#7a0d0d"></span>
+              <span class="color" style="background:#c42b2b"></span>
+              <span class="color" style="background:#f07b7b"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-card guest-card">
+          <div class="guest-section">
+            <h3 class="section-title">Анкета гостя</h3>
+            <p>Ответьте, пожалуйста, на несколько организационных вопросов.</p>
+            <a class="form-button" href="#">Заполнить анкету</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Завершающее фото и подпись -->
+      <div class="ending-section section">
+        <img class="ending-photo" src="imаge3.jpg" alt="Ждём вас">
+        <div class="ending-text">
+          <h2 class="waiting">Ждём вас!</h2>
+          <p class="couple-names">Сергей и Ульяна</p>
+        </div>
+      </div>
+
+    </div>
+
+  </body>
 </html>
